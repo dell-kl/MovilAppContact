@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FormularioSesion.Views.SesionView"
+             xmlns:local="clr-namespace:FormularioSesion.ViewModel"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <local:SesionViewModel></local:SesionViewModel>
+    </ContentPage.BindingContext>
+    
+    <StackLayout BackgroundColor="#0A6DB7">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="120"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Grid.RowSpan="2" BackgroundColor="#E80C74" Margin="140, -90, -250, 1" HeightRequest="100" WidthRequest="10" Grid.ColumnSpan="1" CornerRadius="200"></Frame>
+            <Frame Grid.Row="0" Grid.RowSpan="2" BackgroundColor="#0F99DE" Margin="-5, -45, -5, 45" Padding="0, 0, 0, 0" HeightRequest="40" WidthRequest="10" Grid.ColumnSpan="1" CornerRadius="100"></Frame>
+
+            <Image Grid.Row="2" HorizontalOptions="Center" Grid.ColumnSpan="2" Source="inicioSesion.png" Margin="0, 10, 0, 0" WidthRequest="120" HeightRequest="120"></Image>
+
+            <Frame Grid.Row="3" Margin="50, 25" HeightRequest="15" Grid.ColumnSpan="2" CornerRadius="10">
+                <Entry Text="{Binding usuarioLogin.Username}" PlaceholderColor="#E4DCDC" Placeholder="Username" FontAttributes="Bold"  HorizontalTextAlignment="Center" Margin="-20" TextColor="White" BackgroundColor="Red"></Entry>
+            </Frame>
+            <Frame Grid.Row="4" Margin="50, 25" CornerRadius="10" Grid.ColumnSpan="2">
+                <Entry Text="{Binding usuarioLogin.Password}" Placeholder="Password" PlaceholderColor="#E4DCDC" Margin="-20" FontAttributes="Bold"  HorizontalTextAlignment="Center" BackgroundColor="Red" TextColor="White" IsPassword="True"></Entry>
+            </Frame>
+            <CheckBox Grid.Row="5" Color="#0D8BE7" Grid.Column="1" Margin="-125, -10, 0, 0" IsChecked="True"></CheckBox>
+            <Label Text="Remember Me" Grid.Row="5" Margin="0, 0, 15, 0" Grid.Column="1" TextColor="#3FB8F3" FontSize="18"></Label>
+
+            <Button Command="{Binding CommandVerificarLogin}" x:Name="SignIn" Grid.Row="6" Margin="0, 70, 0, -70" HeightRequest="5" Text="Sign In" TextTransform="None" CornerRadius="20" FontSize="20" WidthRequest="250" BackgroundColor="#0D8BE7" Grid.ColumnSpan="2" HorizontalOptions="Center" TextColor="White"></Button>
+            <Label Text="Forget Password?" Grid.Row="7" FontAttributes="Bold" FontSize="20" Margin="120, 77, -100, -70" TextColor="White"></Label>
+        </Grid>
+    </StackLayout>
+    
+</ContentPage>

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FormularioSesion.ViewModel.Perfiles"
+             x:Class="FormularioSesion.Views.Perfiles.GestorContactView"
+             xmlns:effects="clr-namespace:FormularioSesion.Efectos;assembly=FormularioSesion"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <local:GestorContactViewModel></local:GestorContactViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Int32 x:Key="SmallCornerRadius">4</x:Int32>
+            <x:Int32 x:Key="MediumCornerRadius">8</x:Int32>
+            <x:Int32 x:Key="LargeCornerRadius">16</x:Int32>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout
+        BackgroundColor="#fff">
+            <FlexLayout
+            AlignItems="Center"
+            JustifyContent="SpaceBetween"
+            BackgroundColor="#1F72BD"
+            Padding="10,5"
+            >
+                <ImageButton 
+                Source="Menu.png"
+                BackgroundColor="#1F72BD"
+                x:Name="MenuIcon"
+                Command="{Binding VerMenuCommand}"
+                ></ImageButton>
+
+                <RelativeLayout>
+                    <Image 
+                    Source="iconPeople.png" 
+                    WidthRequest="30"
+                    RelativeLayout.XConstraint="-35"></Image>
+                    <Label
+                    Text="gestionar contactos"
+                    FontAttributes="Bold"
+                    TextColor="#fff"
+                    FontSize="20"
+                    TextTransform="Uppercase"
+                    ></Label>
+                </RelativeLayout>
+            </FlexLayout>
+            <Label
+            Text="Formulario Nuevo Contacto"
+            FontSize="22"
+            TextColor="#000"
+            HorizontalTextAlignment="Center"
+            Padding="0,20"></Label>
+
+            <!-- Sart Mensaje Error -->
+            <StackLayout x:Name="EspacioMensajesError"
+                         IsVisible="{Binding ControlarVistaMensaje}"
+                         Margin="15,0">
+                <Label 
+                    IsVisible="{Binding ControlarVistaMensaje}"
+                    Text="{Binding Mensaje}"
+                    TextColor="{Binding BanderaColor}"
+                    BackgroundColor="{Binding BanderaBackColor}" 
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    WidthRequest="322"
+                    HorizontalTextAlignment="Center"
+                    Padding="0,5,0,5"></Label>
+            </StackLayout>
+            <!-- End Mensaje Error -->
+            
+            <Frame
+                BackgroundColor="#EDEDED"
+                CornerRadius="16"
+                WidthRequest="322"
+                HeightRequest="581"
+                HorizontalOptions="Center">
+                <FlexLayout
+                Direction="Column"
+                >
+                    <StackLayout
+                    Margin="0,0,0,15"
+                    >
+                        <Label 
+                        Text="Nombre Contacto"
+                        FontSize="18"
+                        TextColor="#393939"
+                        Margin="0,0,0,5"
+                        ></Label>
+                        <effects:CustomEntry
+                            CornerRadius="18"  
+                                IsCurvedCornersEnabled="True"  
+                                BackgroundColor="#fff"      
+                                HorizontalTextAlignment="Start"  
+                                FontSize="17"  
+                                HeightRequest="40"  
+                                Placeholder="Proporciona un Nombre"  
+                                PlaceholderColor="Gray"  
+                                TextColor="Black"  
+                                FontAttributes="Bold"  
+                                WidthRequest="100"
+                                x:Name="nombreContacto"
+                                Text="{Binding contactoViewModel.contacto_nombre}"
+                        >
+                        </effects:CustomEntry>
+                    </StackLayout>
+                    <StackLayout
+                        Margin="0,0,0,15">
+                        <Label 
+                        Text="Apellido Contacto"
+                        FontSize="18"
+                        TextColor="#393939"
+                        Margin="0,0,0,5"></Label>
+                        <effects:CustomEntry
+                            CornerRadius="18"  
+                            IsCurvedCornersEnabled="True"  
+                            BackgroundColor="#fff"      
+                            HorizontalTextAlignment="Start"  
+                            FontSize="17"  
+                            HeightRequest="40"  
+                            Placeholder="Proporciona un Apellido"  
+                            PlaceholderColor="Gray"  
+                            TextColor="Black"  
+                            FontAttributes="Bold"  
+                            WidthRequest="100"
+                            Text="{Binding contactoViewModel.contacto_apellido}"
+                        x:Name="apellidoContacto"
+                    >
+                        </effects:CustomEntry>
+                    </StackLayout>
+                    <StackLayout
+                    Margin="0,0,0,15">
+                        <Label 
+                        Text="Telefono o Celular Contacto"
+                        FontSize="18"
+                        TextColor="#393939"
+                        Margin="0,0,0,5"></Label>
+                        <effects:CustomEntry
+                            CornerRadius="18"  
+                            IsCurvedCornersEnabled="True"  
+                            BackgroundColor="#fff"      
+                            HorizontalTextAlignment="Start"  
+                            FontSize="17"  
+                            HeightRequest="40"  
+                            Placeholder="Digita un numero celular o telefonico"  
+                            PlaceholderColor="Gray"  
+                            TextColor="Black"  
+                            FontAttributes="Bold"  
+                            WidthRequest="100"
+                            Text="{Binding contactoViewModel.contacto_numeroCelular}"
+                            x:Name="celularContacto"
+                            Keyboard="Numeric"
+                            
+                    >
+                        </effects:CustomEntry>
+                    </StackLayout>
+                    <StackLayout
+                    Margin="0,0,0,15">
+                        <Label 
+                        Text="Correo Electronico Contacto"
+                        FontSize="18"
+                        TextColor="#393939"
+                        Margin="0,0,0,5"></Label>
+                        <effects:CustomEntry
+                            CornerRadius="18"  
+                            IsCurvedCornersEnabled="True"  
+                            BackgroundColor="#fff"      
+                            HorizontalTextAlignment="Start"  
+                            FontSize="17"  
+                            HeightRequest="40"  
+                            Placeholder="Inserta un correo electronico"  
+                            PlaceholderColor="Gray"  
+                            TextColor="Black"  
+                            FontAttributes="Bold"  
+                            WidthRequest="100"
+                            Text="{Binding contactoViewModel.contacto_email}"
+                            x:Name="correoContacto"
+                            Keyboard="Email"
+                    >
+                        </effects:CustomEntry>
+                    </StackLayout>
+                    <StackLayout
+                     Margin="0,0,0,15">
+                        <Label 
+                        Text="Descripcion"
+                        FontSize="18"
+                        TextColor="#393939"
+                        Margin="0,0,0,5"
+                        ></Label>
+                        <effects:CustomEntry
+                            CornerRadius="18"  
+                            IsCurvedCornersEnabled="True"  
+                            BackgroundColor="#fff"      
+                            HorizontalTextAlignment="Start"  
+                            VerticalTextAlignment="Start"
+                            FontSize="17"  
+                            HeightRequest="100"  
+                            Placeholder="Puedes agregar una descripcion"  
+                            PlaceholderColor="Gray"  
+                            TextColor="Black"  
+                            FontAttributes="Bold"  
+                            WidthRequest="100"
+                            Text="{Binding contactoViewModel.contacto_descripcion}"
+                            x:Name="descripcionContacto"
+                            Keyboard="Chat"
+                    >
+                        </effects:CustomEntry>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="Descripcion"
+                            FontSize="18"
+                            TextColor="#393939"
+                            Margin="0,0,0,5"   
+                        ></Label>
+                        <Frame
+                            CornerRadius="10"
+                            Margin="0"
+                            Padding="0">
+                            <Picker 
+                                BackgroundColor="#fff"
+                                Title="Pais"  
+                                TextColor="Gray"
+                                Margin="0"
+                            >
+                                <Picker.Items>
+                                    <x:String>Ecuador</x:String>
+                                    <x:String>Colombia</x:String>
+                                    <x:String>Peru</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Frame>
+                    </StackLayout>
+                    <Button
+                    BackgroundColor="#E69214"
+                    Margin="0,20,0,0"
+                    CornerRadius="10"
+                    Padding="20,0,10,0"
+                    Text="Registrar Contacto"
+                    ImageSource="Upload.png"
+                    WidthRequest="170"
+                    Command="{Binding RegistrarContactoCommand}"
+                    ></Button>
+                    
+                </FlexLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

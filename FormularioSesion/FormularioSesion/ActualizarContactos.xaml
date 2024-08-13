@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="FormularioSesion.ActualizarContactos"
+             xmlns:effects="clr-namespace:FormularioSesion.Efectos;assembly=FormularioSesion">
+
+    <StackLayout
+            BackgroundColor="#fff">
+        <FlexLayout
+                AlignItems="Center"
+                JustifyContent="SpaceBetween"
+                BackgroundColor="#1F72BD"
+                Padding="10,5"
+                >
+            <ImageButton 
+                    Source="Left.png"
+                    BackgroundColor="#1F72BD"
+                    Clicked="Regresar"
+                    x:Name="MenuIcon"
+                    ></ImageButton>
+
+            <RelativeLayout>
+                <Image 
+                        Source="iconPeople.png" 
+                        WidthRequest="30"
+                        RelativeLayout.XConstraint="-35"></Image>
+                <Label
+                        Text="gestionar contactos"
+                        FontAttributes="Bold"
+                        TextColor="#fff"
+                        FontSize="20"
+                        TextTransform="Uppercase"
+                        ></Label>
+            </RelativeLayout>
+        </FlexLayout>
+        <Label
+                Text="Actualizar Contacto"
+                FontSize="22"
+                TextColor="#000"
+                HorizontalTextAlignment="Center"
+                Padding="0,20"></Label>
+
+        <Frame
+            BackgroundColor="#EDEDED"
+            CornerRadius="16"
+            WidthRequest="322"
+            HeightRequest="581"
+            HorizontalOptions="Center">
+            <FlexLayout
+                Direction="Column"
+                >
+                <StackLayout
+                    Margin="0,0,0,15"
+                    >
+                    <Label 
+                        Text="Nombre Contacto"
+                        FontSize="18"
+                        TextColor="#393939"
+                        Margin="0,0,0,5"
+                        ></Label>
+                    <effects:CustomEntry
+                    CornerRadius="18"  
+                        IsCurvedCornersEnabled="True"  
+                        BackgroundColor="#fff"      
+                        HorizontalTextAlignment="Start"  
+                        FontSize="17"  
+                        HeightRequest="40"  
+                        Placeholder="Proporciona un Nombre"  
+                        PlaceholderColor="Gray"  
+                        TextColor="Black"  
+                        FontAttributes="Bold"  
+                        WidthRequest="100"
+                        Text="{Binding contacto_nombre}"
+                        x:Name="nombreContacto"
+                >
+                    </effects:CustomEntry>
+                </StackLayout>
+                <StackLayout
+            Margin="0,0,0,15">
+                    <Label 
+                Text="Apellido Contacto"
+                FontSize="18"
+                TextColor="#393939"
+                Margin="0,0,0,5"></Label>
+                    <effects:CustomEntry
+                    CornerRadius="18"  
+                    IsCurvedCornersEnabled="True"  
+                    BackgroundColor="#fff"      
+                    HorizontalTextAlignment="Start"  
+                    FontSize="17"  
+                    HeightRequest="40"  
+                    Placeholder="Proporciona un Apellido"  
+                    PlaceholderColor="Gray"  
+                    TextColor="Black"  
+                    FontAttributes="Bold"  
+                    WidthRequest="100"
+                    Text="{Binding contacto_apellido}" 
+                    x:Name="apellidoContacto"
+            >
+                    </effects:CustomEntry>
+                </StackLayout>
+                <StackLayout
+            Margin="0,0,0,15">
+                    <Label 
+                Text="Telefono o Celular Contacto"
+                FontSize="18"
+                TextColor="#393939"
+                Margin="0,0,0,5"></Label>
+                    <effects:CustomEntry
+                    CornerRadius="18"  
+                    IsCurvedCornersEnabled="True"  
+                    BackgroundColor="#fff"      
+                    HorizontalTextAlignment="Start"  
+                    FontSize="17"  
+                    HeightRequest="40"  
+                    Placeholder="Digita un numero celular o telefonico"  
+                    PlaceholderColor="Gray"  
+                    TextColor="Black"  
+                    FontAttributes="Bold"  
+                    WidthRequest="100"
+                    x:Name="celularContacto"
+                    Text="{Binding contacto_numeroCelular}"
+            >
+                    </effects:CustomEntry>
+                </StackLayout>
+                <StackLayout
+            Margin="0,0,0,15">
+                    <Label 
+                Text="Correo Electronico Contacto"
+                FontSize="18"
+                TextColor="#393939"
+                Margin="0,0,0,5"></Label>
+                    <effects:CustomEntry
+                    CornerRadius="18"  
+                    IsCurvedCornersEnabled="True"  
+                    BackgroundColor="#fff"      
+                    HorizontalTextAlignment="Start"  
+                    FontSize="17"  
+                    HeightRequest="40"  
+                    Placeholder="Digita un numero celular o telefonico"  
+                    PlaceholderColor="Gray"  
+                    TextColor="Black"  
+                    FontAttributes="Bold"  
+                    WidthRequest="100"
+                    x:Name="correoContacto"
+                    Text="{Binding contacto_email}"
+            >
+                    </effects:CustomEntry>
+                </StackLayout>
+                <StackLayout>
+                    <Label 
+                Text="Descripcion"
+                FontSize="18"
+                TextColor="#393939"
+                Margin="0,0,0,5"></Label>
+                    <effects:CustomEntry
+                    CornerRadius="18"  
+                    IsCurvedCornersEnabled="True"  
+                    BackgroundColor="#fff"      
+                    HorizontalTextAlignment="Start"  
+                    VerticalTextAlignment="Start"
+                    FontSize="17"  
+                    HeightRequest="100"  
+                    Placeholder="Puedes agregar una descripcion"  
+                    PlaceholderColor="Gray"  
+                    TextColor="Black"  
+                    FontAttributes="Bold"  
+                    WidthRequest="100"
+                    x:Name="descripcionContacto"
+                    Text="{Binding contacto_descripcion}"
+            >
+                    </effects:CustomEntry>
+                </StackLayout>
+                <Button
+                    BackgroundColor="#E69214"
+                    Margin="0,20,0,0"
+                    CornerRadius="10"
+                    Padding="20,0,10,0"
+                    Text="Actualizar Contacto"
+                    ImageSource="Upload.png"
+                    WidthRequest="170"
+                    x:Name="botonActualizar"
+                    Clicked="actualizarContacto"
+                    ClassId="{Binding contacto_id}"
+                ></Button>
+            </FlexLayout>
+        </Frame>
+
+    </StackLayout>
+</ContentPage>

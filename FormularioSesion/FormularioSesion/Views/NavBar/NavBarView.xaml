@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FormularioSesion.Views.NavBar.NavBarView"
+             xmlns:local="clr-namespace:FormularioSesion.Dto"
+             xmlns:local2="clr-namespace:FormularioSesion.ViewModel.NavBar"
+             xmlns:local3="clr-namespace:FormularioSesion"
+             xmlns:BehaviorPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             x:Name="flyout"
+             NavigationPage.HasNavigationBar="False"
+             Title="Opciones Navegacion"
+             BackgroundColor="#fff">
+
+    <ContentPage.BindingContext>
+        <local2:NavBarViewModel></local2:NavBarViewModel>
+    </ContentPage.BindingContext>
+
+    <CollectionView x:Name="VistaColeccion"
+                x:FieldModifier="public"
+                SelectionMode="Single">
+        <CollectionView.ItemsSource>
+
+            <x:Array Type="{x:Type local:FlyoutPageItem}">
+                <local:FlyoutPageItem Title="Formulario"
+                                  IconSource="Form.png"
+                                  TargetType="{x:Type local3:Views.Perfiles.GestorContactView}" />
+                <local:FlyoutPageItem Title="Contactos"
+                                  IconSource="contact.png"
+                                  TargetType="{x:Type local3:Views.Contactos.ContactosView}" />
+                <local:FlyoutPageItem Title="Cerrar Sesion"
+                                  IconSource="Close.png"
+                                  TargetType="{x:Type local3:Views.SesionView}" />
+            </x:Array>
+        </CollectionView.ItemsSource>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="5,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding IconSource}" />
+                    <Label Grid.Column="1"
+                       Margin="20,0"
+                       TextColor="#000"
+                       Text="{Binding Title}"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

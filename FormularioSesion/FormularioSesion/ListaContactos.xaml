@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:IntelliAbb.Xamarin.Controls;assembly=IntelliAbb.Xamarin.Controls"
+             x:Class="FormularioSesion.ListaContactos"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#fff">
+    
+    <ScrollView>
+        
+        <StackLayout
+                BackgroundColor="#fff">
+            <FlexLayout
+                    AlignItems="Center"
+                    JustifyContent="SpaceBetween"
+                    BackgroundColor="#1F72BD"
+                    Padding="10,5"
+                    >
+                <ImageButton 
+                        Source="Menu.png"
+                        BackgroundColor="#1F72BD"
+                        Clicked="MostrarBarraLateral"
+                        x:Name="MenuIcon"
+                        ></ImageButton>
+
+                <RelativeLayout>
+                    <Image 
+                            Source="iconPeople.png" 
+                            WidthRequest="30"
+                            RelativeLayout.XConstraint="-35"></Image>
+                    <Label
+                            Text="gestionar contactos"
+                            FontAttributes="Bold"
+                            TextColor="#fff"
+                            FontSize="20"
+                            TextTransform="Uppercase"
+                            ></Label>
+                </RelativeLayout>
+            </FlexLayout>
+            <Label
+                    Text="Listado Contactos"
+                    FontSize="22"
+                    TextColor="#000"
+                    HorizontalTextAlignment="Center"
+                    Padding="0,20"></Label>
+            
+            <!-- Listado de contactos registrados -->
+            <ListView x:Name="ListadoContactos" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="6"
+                                BackgroundColor="#EDEDED"
+                                Padding="0,0,5,0"
+                                Margin="15,0,15,10">
+                                <Grid 
+                                    WidthRequest="322"
+                                    >
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"></RowDefinition>
+                                        <RowDefinition Height="110"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition Width="230"></ColumnDefinition>
+                                        <ColumnDefinition Width="90"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Frame
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        CornerRadius="10"
+                                        Grid.RowSpan="2"
+                                        BackgroundColor="#E69214"></Frame>
+                                    <FlexLayout
+                                        Direction="Row"
+                                        AlignItems="Center"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        Padding="0"
+                                        Margin="5,0,0,0">
+
+                                        <Image
+                                            Source="Group.png"
+                                            WidthRequest="25"/>
+                                        <Label Text="{Binding contacto_nombre}"
+                                               FontAttributes="Bold"
+                                               FontSize="28"
+                                               TextColor="#000"
+                                               Padding="5,0,5,0"
+                                               ></Label>
+                                        <Label Text="{Binding contacto_apellido}"
+                                               FontAttributes="Bold"
+                                               FontSize="28"
+                                               TextColor="#000"></Label>
+                                    </FlexLayout>
+                                    <FlexLayout
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        Direction="Column"
+                                        AlignItems="Start"
+                                        Padding="5,0,0,0"
+                                        Margin="0,0,0,0">
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="tel/cel" 
+                                                   FontAttributes="None"
+                                                   TextColor="#000"
+                                                   FontSize="15"></Label>
+                                            <Label Text="{Binding contacto_numeroCelular}"
+                                                   TextColor="#000"
+                                                   FontAttributes="Bold"
+                                                   FontSize="15"></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Vertical"
+                                                    Margin="0,0,0,0">
+                                            <Label Text="correo" 
+                                                   TextColor="#000"
+                                                   FontAttributes="None"
+                                                   FontSize="15"></Label>
+                                            <Label Text="{Binding contacto_email}"
+                                               FontAttributes="Bold"
+                                               TextColor="#000"
+                                               FontSize="15"></Label>
+                                        </StackLayout>
+                                    </FlexLayout>
+
+                                    <FlexLayout
+                                        Grid.Column="2"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Direction="Column"
+                                        AlignItems="Center"
+                                        JustifyContent="SpaceEvenly">
+
+                                        <ImageButton
+                                                Source="EliminarIcon.png"
+                                                CornerRadius="0"
+                                                BackgroundColor="#EDEDED"
+                                                WidthRequest="105"
+                                                HeightRequest="105"
+                                                Clicked="EliminarRegistro"
+                                                Padding="0,10,0,0"
+                                                ClassId="{Binding contacto_id}"
+                                        ></ImageButton>
+
+                                        <ImageButton
+                                                Source="EditarIcon.png"
+                                                BackgroundColor="#EDEDED"
+                                                Clicked="Registro"
+                                                ClassId="{Binding contacto_id}"
+                                                WidthRequest="105"
+                                                HeightRequest="105"></ImageButton>
+                                    </FlexLayout>
+
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
